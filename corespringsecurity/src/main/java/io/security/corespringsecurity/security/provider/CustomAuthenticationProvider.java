@@ -34,12 +34,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("비밀번호가 틀렸습니다.");
         }
 
-        FormWebAuthenticationDetails formWebAuthenticationDetails = (FormWebAuthenticationDetails) authentication.getDetails();
-        String secretKey = formWebAuthenticationDetails.getSecretKey();
-
-        if (secretKey == null || !"secret".equals(secretKey)) {
-            throw new InsufficientAuthenticationException("insufficientAuthenticationException");
-        }
+//        FormWebAuthenticationDetails formWebAuthenticationDetails = (FormWebAuthenticationDetails) authentication.getDetails();
+//        String secretKey = formWebAuthenticationDetails.getSecretKey();
+//
+//        if (secretKey == null || !"secret".equals(secretKey)) {
+//            throw new InsufficientAuthenticationException("insufficientAuthenticationException");
+//        }
 
         // 인증 처리시는 파마미터가 2개인 메소드, 검증 완료후에는 파라미터가 3개인 놈
         // 파라미터 2개 로그인 처리 시
