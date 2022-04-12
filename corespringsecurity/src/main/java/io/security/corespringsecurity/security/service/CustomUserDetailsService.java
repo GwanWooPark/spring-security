@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Account account = userRepository.findByUsername(username);
 
         if (account == null) {
-            throw new UsernameNotFoundException("일치하는 이름이 없습니다.");
+            throw new UsernameNotFoundException("Invalid Username or Password");
         }
 
         List<GrantedAuthority> roles = new ArrayList<>();
