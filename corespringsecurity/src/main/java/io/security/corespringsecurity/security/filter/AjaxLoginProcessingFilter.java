@@ -16,10 +16,12 @@ import java.io.IOException;
 
 public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingFilter {
 
+    private static final String XML_HTTP_REQUEST = "XMLHttpRequest";
+    private static final String X_REQUESTED_WITH = "X-Requested-With";
     private ObjectMapper objectMapper = new ObjectMapper();
 
     public AjaxLoginProcessingFilter() {
-        super(new AntPathRequestMatcher("/api/login"));
+        super(new AntPathRequestMatcher("/ajaxLogin", "POST"));
     }
 
     @Override
@@ -37,14 +39,11 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
         AjaxAuthenticationToken authenticationToken = new AjaxAuthenticationToken(accountDto.getUsername(), accountDto.getPassword());
 
 
-        return getAuthenticationManager().authenticate(authenticationToken);
+        return this.getAuthenticationManager().authenticate(authenticationToken);
     }
 
     public boolean isAjax(HttpServletRequest request) {
 
-        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
-            return true;
-        }
-        return false;
+        return XML_HTTP_REQUEST.equals(request.getHeader(X_REQUESTED_WITH));
     }
 }
