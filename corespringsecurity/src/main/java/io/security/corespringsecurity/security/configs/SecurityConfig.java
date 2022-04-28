@@ -4,6 +4,7 @@ import io.security.corespringsecurity.security.filter.AjaxLoginProcessingFilter;
 import io.security.corespringsecurity.security.handler.CustomAccessDeniedHandler;
 import io.security.corespringsecurity.security.provider.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,11 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationDetailsSource authenticationDetailsSource;
 
-    @Autowired
-    private AuthenticationSuccessHandler CustomAuthenticationSuccessHandler;
+//    @Autowired
+//    private AuthenticationSuccessHandler CustomAuthenticationSuccessHandler;
 
-    @Autowired
-    private AuthenticationFailureHandler CustomAuthenticationFailureHandler;
+//    @Autowired
+//    private AuthenticationFailureHandler CustomAuthenticationFailureHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -68,8 +69,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login_proc")
                 .authenticationDetailsSource(authenticationDetailsSource)
                 .defaultSuccessUrl("/")
-                .successHandler(CustomAuthenticationSuccessHandler)
-                .failureHandler(CustomAuthenticationFailureHandler)
+//                .successHandler(CustomAuthenticationSuccessHandler)
+//                .failureHandler(CustomAuthenticationFailureHandler)
                 .permitAll()
         ;
 
